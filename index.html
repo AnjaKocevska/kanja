@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="kaanjaaa: painting, silver jewelry and design by Anja.">
+<meta property="og:title" content="kaanjaaa">
+<meta property="og:description" content="Painting, silver jewelry and design by Anja.">
+<meta name="theme-color" content="#0a0a09">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a09'/%3E%3Ctext x='32' y='47' font-family='Arial Black,Arial' font-weight='900' font-size='44' text-anchor='middle' fill='%23f1eee7'%3Ek%3C/text%3E%3C/svg%3E">
+<title>kaanjaaa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,100,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a night gallery. Black wall with film grain, one-color lowercase wordmark, hot magenta as the single accent,
+   a scrolling ticker band for edge. The work carries all other color. Deliberately single-theme (dark). */
+:root{
+  --wall:#0a0a09;
+  --ink:#f1eee7;
+  --muted:#8f8b83;
+  --line:#262522;
+  --cobalt:#2340d6;
+  --magenta:#e23d8a;
+  --green:#22a35a;
+  --paper:#141413;
+  --display:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --gutter:clamp(16px,4vw,56px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--wall);color:var(--ink);font-family:var(--body);font-stretch:100%;font-size:clamp(16px,.5vw + 14px,18px);line-height:1.6;overflow-x:hidden}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:var(--gutter)}
+.label{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--magenta);outline-offset:3px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--wall) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
+.mark{font-family:var(--display);font-weight:900;font-stretch:125%;font-size:1.3rem;letter-spacing:-.03em;text-decoration:none;text-transform:lowercase;color:var(--ink)}
+nav{display:flex;gap:clamp(14px,3vw,32px)}
+nav a{font-family:var(--mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding-block:4px;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
+nav a:hover{color:var(--ink)}
+nav a[aria-current="page"]{color:var(--ink);border-color:var(--ink)}
+nav a.navdrop{color:var(--magenta)}
+nav a.navdrop[aria-current="page"]{color:var(--magenta);border-color:var(--magenta)}
+
+section.room{padding-block:clamp(36px,6vw,80px) clamp(64px,9vw,120px)}
+
+/* ABOUT */
+.wordmark{font-family:var(--display);font-weight:900;font-stretch:125%;text-transform:lowercase;line-height:.78;letter-spacing:-.055em;font-size:clamp(3.4rem,15.6vw,13.4rem);margin:0 0 0 -.04em;padding-bottom:.17em;width:max-content;white-space:nowrap;color:var(--ink)}
+.under{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;border-top:1px solid var(--ink);margin-top:clamp(14px,2vw,22px);padding-top:12px}
+.under .label{color:var(--ink);margin-left:auto}
+
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.4vw,18px);margin-top:clamp(48px,7vw,96px)}
+.strip a{display:block;aspect-ratio:1640/2187;overflow:hidden;background:var(--paper)}
+.strip img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.strip a:hover img{transform:scale(1.04)}
+
+.feature{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,6vw,96px);align-items:end;margin:clamp(48px,7vw,96px) 0 0}
+.feature img{display:block;width:100%;max-width:100%;height:auto}
+.feature figcaption{justify-self:end;text-align:right}
+@media (max-width:760px){.feature{grid-template-columns:1fr}.feature figcaption{order:2;justify-self:start;text-align:left}}
+.about-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,6vw,96px);align-items:start;margin-top:clamp(40px,6vw,80px)}
+.portrait{margin:0}
+.portrait img{display:block;width:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 38%}
+.portrait figcaption{margin-top:10px}
+.about-copy{min-width:0;max-width:60ch}
+.about-copy h1{font-family:var(--display);font-weight:600;font-stretch:100%;font-size:clamp(1.8rem,3.2vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin:.5em 0 .8em;text-wrap:balance}
+.about-copy h1 b{font-weight:900;font-stretch:125%;text-transform:lowercase;color:var(--magenta);letter-spacing:-.03em}
+.about-copy p{margin:0 0 1.1em}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:10px 28px;margin:36px 0;padding:22px 0;border-block:1px solid var(--line)}
+.facts dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.facts dd{margin:0}
+.links{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:14px 20px;border:1.5px solid var(--ink);color:var(--ink);background:transparent;transition:background .2s,color .2s;cursor:pointer}
+.btn:hover{background:var(--ink);color:var(--wall)}
+.btn.blue{background:var(--magenta);border-color:var(--magenta);color:#0a0a09}
+.btn.blue:hover{background:var(--ink);border-color:var(--ink);color:#0a0a09}
+
+/* WORK */
+.room-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:end;margin-bottom:clamp(28px,4vw,48px);border-bottom:1px solid var(--ink);padding-bottom:18px}
+.room-head h2{font-family:var(--display);font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(3rem,10vw,8rem);line-height:.82;letter-spacing:-.02em;margin:0}
+.room-head p{margin:0;max-width:44ch;justify-self:end;color:var(--muted)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:36px}
+.chip{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;padding:9px 16px;border:1.5px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--ink);color:var(--ink)}
+.group{margin-bottom:64px}
+.group-title{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:22px}
+.group-title h3{font-family:var(--display);font-weight:700;font-stretch:110%;font-size:clamp(1.3rem,2.2vw,1.7rem);letter-spacing:-.01em;margin:0}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:0 clamp(14px,2vw,28px);align-items:start}
+.tile{break-inside:avoid;margin:0 0 clamp(18px,2.4vw,32px);display:block;width:100%;padding:0;border:0;background:none;text-align:left;cursor:zoom-in;color:inherit;font:inherit}
+.tile .ph{display:block;overflow:hidden;background:var(--paper)}
+.tile img{display:block;width:100%;height:auto;transition:transform .6s ease}
+.tile:hover img{transform:scale(1.025)}
+.tile .cap{display:flex;justify-content:space-between;gap:12px;padding-top:10px;font-size:.9rem}
+.tile .cap small{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--muted);text-align:right}
+.empty{border:1px dashed var(--line);padding:clamp(28px,5vw,56px);text-align:center;color:var(--muted)}
+
+/* COLLECTION */
+.drop{background:var(--cobalt);color:#fff;padding:clamp(28px,6vw,88px) clamp(20px,5vw,72px)}
+.drop .label{color:rgba(255,255,255,.75)}
+.drop h2{font-family:var(--display);font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(3rem,12vw,10rem);line-height:.82;letter-spacing:-.02em;margin:.25em 0 .35em}
+.drop-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.drop-meta span{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border:1px solid rgba(255,255,255,.55)}
+.drop-meta span.on{background:#fff;color:var(--cobalt);border-color:#fff}
+.drop p{max-width:54ch;margin:0;color:rgba(255,255,255,.9)}
+.drop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:18px;margin-top:48px}
+.drop-slot{aspect-ratio:4/5;border:1px solid rgba(255,255,255,.4);display:grid;place-items:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:20;background:rgba(251,250,247,.97);display:grid;place-items:center;padding:56px 16px 24px}
+.lb figure{margin:0;text-align:center}
+.lb img{max-width:100%;max-height:80vh;width:auto}
+.lb figcaption{margin-top:14px}
+.lb .x{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-block:24px 36px}
+
+@media (max-width:760px){
+  .about-grid,.room-head{grid-template-columns:1fr}
+  .room-head p{justify-self:start}
+  .strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .strip a:first-child{grid-column:1/-1}
+  .portrait{max-width:440px}
+}
+
+/* COLLECTION: the whole site switches to a night palette */
+:root[data-room="collection"]{--wall:#0c0c0b;--ink:#f2efe8;--muted:#9b978e;--line:#2a2926;color-scheme:dark}
+section.coll{padding-block:0 clamp(64px,9vw,120px)}
+.c-hero{position:relative;margin:0;background:#000}
+.c-hero img{display:block;width:100%;max-width:100%;height:min(88vh,62vw);min-height:420px;object-fit:cover;object-position:50% 40%}
+.c-hero figcaption{position:absolute;left:0;right:0;bottom:0;padding-block:28px clamp(24px,4vw,48px);background:linear-gradient(transparent,rgba(0,0,0,.7));color:#f2efe8}
+.c-hero .label{color:rgba(242,239,232,.8)}
+.c-hero h2{font-family:var(--display);font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(3rem,11vw,9.5rem);line-height:.82;letter-spacing:-.02em;margin:.2em 0 .25em}
+.c-status{display:inline-block;font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;background:var(--magenta);color:#fff}
+.c-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;padding-block:clamp(40px,6vw,88px);border-bottom:1px solid var(--line);margin-bottom:clamp(24px,4vw,48px)}
+.c-intro p{margin:0;font-size:clamp(1.2rem,2vw,1.7rem);line-height:1.35;max-width:36ch;text-wrap:balance}
+.c-full{display:block;width:100%;max-width:100%;height:auto;margin-bottom:clamp(14px,2vw,28px)}
+.c-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,28px);margin-bottom:clamp(14px,2vw,28px)}
+.c-pair img,.c-end img{display:block;width:100%;max-width:100%;height:auto}
+.c-end{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:end}
+.c-end-copy{padding-bottom:12px}
+.c-big{font-family:var(--display);font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(2.4rem,6vw,5rem);line-height:.85;margin:.2em 0 .4em;color:var(--magenta)}
+.c-end-copy p:last-child{color:var(--muted);max-width:36ch;margin:0}
+@media (max-width:760px){
+  .c-intro,.c-pair,.c-end{grid-template-columns:1fr}
+  .c-hero img{height:70vh}
+}
+
+/* grain */
+body::after{content:"";position:fixed;inset:-50%;z-index:30;pointer-events:none;background:url("img/grain.png");opacity:.07;mix-blend-mode:screen;animation:grain 1.2s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
+/* ticker */
+.ticker{background:var(--magenta);color:#0a0a09;overflow:hidden;white-space:nowrap}
+.ticker div{display:inline-flex;gap:2.2em;padding-block:7px;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;animation:tick 38s linear infinite}
+.ticker span::after{content:"✳";margin-left:2.2em}
+@keyframes tick{to{transform:translateX(-50%)}}
+::selection{background:var(--magenta);color:#0a0a09}
+@media (prefers-reduced-motion:reduce){body::after,.ticker div{animation:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>html,body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="#about" aria-label="kaanjaaa, home">kaanjaaa</a>
+    <nav aria-label="Main">
+      <a href="#about" data-room="about">About</a>
+      <a href="#work" data-room="work">Work</a>
+      <a href="#collection" data-room="collection" class="navdrop">Collection</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ABOUT -->
+  <section class="room wrap" id="about" data-room="about">
+    <h2 class="wordmark">kaanjaaa</h2>
+    <div class="under">
+      <span class="label">Painting / Jewelry / Design</span>
+    </div>
+
+
+    <div class="about-grid">
+      <figure class="portrait">
+        <img src="anja2.jpg" alt="Anja in a pink beret, holding up an open watercolor sketchbook over her face">
+        <figcaption class="label">Anja, with her sketchbook</figcaption>
+      </figure>
+      <div class="about-copy">
+        <span class="label">About</span>
+        <h1>Hi, I’m Anja, working under the artist name <b>Kanja</b>.</h1>
+        <p>I see myself as a multidisciplinary artist with a background in design, exploring abstraction across different mediums. Painting has always been one of the most natural ways for me to express myself, particularly through watercolor, color, intuitive forms, and abstract compositions.</p>
+        <p>More recently, my practice has expanded into jewelry, where I translate the same abstract language into objects that can be worn. For me, it’s another way of exploring form, color, expression, and the relationship between art and the person carrying it.</p>
+        <p>Whether through painting, jewelry, or other forms, my work is driven by intuition, experimentation, and the joy of making.</p>
+        <dl class="facts">
+          <dt>Painting</dt><dd>Watercolor, acrylic, digital, collage</dd>
+          <dt>Objects</dt><dd>Handmade silver rings and pendants</dd>
+          <dt>Background</dt><dd>Design</dd>
+        </dl>
+        <div class="links">
+          <a class="btn" href="#work">View work →</a>
+          <a class="btn blue" href="#collection">New collection →</a>
+        </div>
+      </div>
+    </div>
+    <figure class="feature">
+      <figcaption class="label">Silver rings, worn by Anja</figcaption>
+      <img src="img/me_new.jpg" alt="Anja's hand over her face, wearing three large silver rings">
+    </figure>
+  </section>
+
+  <!-- COLLECTION -->
+  <section class="room coll" id="collection" data-room="collection" hidden>
+    <figure class="c-hero">
+      <img src="img/c_hands.jpg" alt="Hands wearing Kanja silver rings held over a face">
+      <figcaption class="wrap">
+        <span class="label">kaanjaaa · New collection</span>
+        <h2>New<br>collection</h2>
+        <span class="c-status">Coming soon</span>
+      </figcaption>
+    </figure>
+
+    <div class="wrap">
+      <div class="c-intro">
+        <span class="label">The pieces</span>
+        <p>Handmade silver rings and pendants, cast from the same intuitive forms as the paintings: suns, spirals, stars and soft broken edges, some set with small colored stones.</p>
+      </div>
+
+      <img class="c-full" src="img/c_pieces.jpg" alt="Eight silver pieces from the collection on a dark green background">
+
+      <div class="c-pair">
+        <img src="img/c_apple.jpg" alt="Collection ring worn while biting an apple, in front of a TV repair shop">
+        <img src="img/c_mirror.jpg" alt="Collection ring reflected in a scooter mirror">
+      </div>
+
+      <img class="c-full" src="img/c_tv.jpg" alt="Model in a pink track jacket wearing collection rings in front of a TV repair shop window">
+
+      <div class="c-pair">
+        <img src="img/c_green.jpg" alt="Model with a large collection ring held to her mouth, against a green wall">
+        <img src="img/c_collage.jpg" alt="Collage of the shoot with collection rings worn on several hands">
+      </div>
+
+      <img class="c-full" src="img/c_glitch.jpg" alt="Glitched image of the collection pieces on green and pink">
+
+      <div class="c-end">
+        <img src="img/c_hands_green.jpg" alt="Friends' hands with collection rings resting on a model's head">
+        <div class="c-end-copy">
+          <span class="label">Drop</span>
+          <p class="c-big">Coming soon</p>
+          <p>The full lookbook, with every piece and its details, is available on request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="room wrap" id="work" data-room="work" hidden>
+    <div class="room-head">
+      <h2>Work</h2>
+      <p>One abstract language in two forms: on paper and canvas, and as silver you can wear.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter work">
+      <button class="chip" id="f-all" data-f="all" aria-pressed="true">All</button>
+      <button class="chip" id="f-paint" data-f="paintings" aria-pressed="false">Paintings</button>
+      <button class="chip" id="f-jewel" data-f="jewelry" aria-pressed="false">Jewelry</button>
+    </div>
+    <div class="group" data-group="paintings">
+      <div class="group-title"><h3>Paintings</h3><span class="label" id="c-paintings"></span></div>
+      <div class="gallery" id="g-paintings"></div>
+    </div>
+    <div class="group" data-group="jewelry">
+      <div class="group-title"><h3>Jewelry</h3><span class="label" id="c-jewelry"></span></div>
+      <div class="gallery" id="g-jewelry"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap"><span class="label">© 2026 kaanjaaa</span><span class="label">Painting · Jewelry · Design</span></div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Artwork viewer">
+  <figure><img id="lb-img" alt=""><figcaption class="label" id="lb-cap"></figcaption></figure>
+  <button class="btn x" id="lb-close">Close</button>
+</div>
+
+<script>
+const WORK = {
+  paintings: [
+    {src:"img/img_4809.jpg", title:"", note:"Watercolor on paper"},
+    {src:"img/digital_star.jpg", title:"", note:"Digital painting"},
+    {src:"img/img_5757.jpg", title:"", note:"Watercolor on paper"},
+    {src:"img/img_2602.jpg", title:"", note:"Watercolor on paper"},
+    {src:"img/img_7010.jpg", title:"", note:"Watercolor on paper"},
+    {src:"img/collage.jpg", title:"", note:"Digital drawing on photograph"},
+    {src:"img/img_4855.jpg", title:"", note:"Watercolor on paper"},
+    {src:"img/img_7004.jpg", title:"", note:"Watercolor on paper"},
+    {src:"img/img_1086.jpg", title:"", note:"Watercolor on paper"},
+    {src:"img/wc_figure.jpg", title:"", note:"Watercolor on paper"},
+    {src:"img/img_0563.jpg", title:"", note:"Watercolor on paper"},
+    {src:"img/img_8453.jpg", title:"", note:"Acrylic on canvas"},
+    {src:"img/img_5507.jpg", title:"", note:"Acrylic on canvas"},
+    {src:"img/img_7027.jpg", title:"Series", note:"Nine works, watercolor on paper"},
+  ],
+  jewelry: [
+    {src:"img/star_3.jpg", title:"Star ring", note:"Silver, digital drawing"},
+    {src:"img/img_8966.jpg", title:"Ring", note:"Silver"},
+    {src:"img/img_2300.jpg", title:"Pendant", note:"Silver"},
+    {src:"img/img_2225.jpg", title:"Ring", note:"Silver"},
+    {src:"img/img_6962.jpg", title:"Rings", note:"Silver"},
+    {src:"img/img_8233.jpg", title:"Ring", note:"Silver"},
+    {src:"img/jw_boxes.jpg", title:"Rings and pendants", note:"Silver"},
+    {src:"img/img_6242.jpg", title:"Pins", note:"Silver"},
+    {src:"img/img_2275.jpg", title:"Pendant", note:"Silver"},
+    {src:"img/img_8526.jpg", title:"Ring", note:"Silver"},
+  ]
+};
+
+function tile(it){
+  const b=document.createElement("button");b.className="tile";b.type="button";
+  const ph=document.createElement("span");ph.className="ph";
+  const img=document.createElement("img");img.src=it.src;img.alt=[it.title,it.note].filter(Boolean).join(", ");img.loading="lazy";
+  ph.appendChild(img);
+  const cap=document.createElement("span");cap.className="cap";
+  const t=document.createElement("span");t.textContent=it.title||it.note;
+  const n=document.createElement("small");n.textContent=it.title?it.note:"";
+  cap.append(t,n);b.append(ph,cap);
+  b.addEventListener("click",()=>openLb(it));
+  return b;
+}
+for(const k of ["paintings","jewelry"]){
+  const g=document.getElementById("g-"+k),list=WORK[k];
+  if(list.length){list.forEach(it=>g.appendChild(tile(it)));document.getElementById("c-"+k).textContent=String(list.length).padStart(2,"0")+" works";}
+  else{g.className="empty";g.textContent="Jewelry photography coming soon.";}
+}
+
+document.querySelectorAll(".chip").forEach(ch=>ch.addEventListener("click",()=>{
+  document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===ch));
+  const f=ch.dataset.f;
+  document.querySelectorAll("[data-group]").forEach(g=>g.hidden=!(f==="all"||g.dataset.group===f));
+}));
+
+const rooms=["about","work","collection"];
+function show(){
+  const r=rooms.includes(location.hash.slice(1))?location.hash.slice(1):"about";
+  document.querySelectorAll("section.room").forEach(s=>s.hidden=s.dataset.room!==r);
+  document.documentElement.dataset.room=r;
+  document.querySelectorAll("nav a").forEach(a=>a.dataset.room===r?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
+  window.scrollTo(0,0);
+}
+addEventListener("hashchange",show);show();
+
+const lb=document.getElementById("lb");
+function openLb(it){const i=document.getElementById("lb-img");i.src=it.src;i.alt=[it.title,it.note].filter(Boolean).join(", ");document.getElementById("lb-cap").textContent=[it.title,it.note].filter(Boolean).join(" — ");lb.hidden=false;document.getElementById("lb-close").focus()}
+function closeLb(){lb.hidden=true}
+document.getElementById("lb-close").addEventListener("click",closeLb);
+lb.addEventListener("click",e=>{if(e.target===lb||e.target.tagName==="FIGURE")closeLb()});
+addEventListener("keydown",e=>{if(e.key==="Escape")closeLb()});
+
+/* fit the wordmark to the full column width */
+function fitMark(){const w=document.querySelector(".wordmark");if(!w||!w.offsetParent)return;w.style.fontSize="";const box=w.parentElement.clientWidth-parseFloat(getComputedStyle(w.parentElement).paddingLeft)-parseFloat(getComputedStyle(w.parentElement).paddingRight);const fs=parseFloat(getComputedStyle(w).fontSize);w.style.fontSize=(fs*box/w.getBoundingClientRect().width*0.99)+"px";}
+addEventListener("resize",fitMark);addEventListener("hashchange",()=>requestAnimationFrame(fitMark));
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(fitMark);fitMark();
+</script>
+
+</body>
+</html>
